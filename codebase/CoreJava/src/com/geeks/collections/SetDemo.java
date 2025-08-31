@@ -16,7 +16,7 @@ public static void main(String[] args) {
 	set1.add("Delhi");
 	set1.add("Mumbai");
 	System.out.println(set1);
-	
+	System.out.println(set1.size());
 	//TreeSet  -- No duplicates
 	// -- sorted order in default
 	TreeSet<String> set2=new TreeSet<>();

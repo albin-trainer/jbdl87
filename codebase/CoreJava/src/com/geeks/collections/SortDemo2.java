@@ -1,6 +1,8 @@
 package com.geeks.collections;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Consumer;
 public class SortDemo2 {
 public static void main(String[] args) {
 	Product p1=new Product(101,"T Shirt",999.99f,4.5f);
@@ -23,5 +25,15 @@ public static void main(String[] args) {
 	Collections.sort(plist, new SortByRatings());
 	System.out.println("---sorted by Ratings H to L--");
 	System.out.println(plist);
+	Comparator<Product>comparator=(Product pr1, Product pr2) ->{
+		return pr1.getPrice()<pr2.getPrice()?-1:1;
+	};
+	Collections.sort(plist,comparator);
+	//display it ...
+	Consumer<Product> c=(p)->System.out.println(p);
+	System.out.println("-----------");
+	plist.forEach(c);
+	Collections.sort(plist, (pr1,pr2)->pr1.getPrice()<pr2.getPrice()?-1:1);
+	
 }
 }
