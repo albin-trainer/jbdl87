@@ -1,5 +1,7 @@
 package com.geeks.streams;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -18,5 +20,23 @@ public static void main(String[] args) {
 	Predicate<Product> predicate=p->p.getRatings()>=4.5;
 	Consumer<Product>consumer=p->System.out.println(p.getProdName());
 	plist.stream().filter(predicate).forEach(consumer);
+	
+	//sort the list based on price L to H
+	//find the highest rated    product
+	//find the cheapest product
+	List<Product> sortedProducts=
+	plist.stream().sorted( (pr1,pr2)->pr1.getPrice()<pr2.getPrice()?-1:1 ).toList();
+	System.out.println("-----------------");
+	sortedProducts.forEach(p->System.out.println(p));
+	
+	Optional<Product>optionalProduct=
+	plist.stream().max((pr1,pr2)->pr1.getRatings()<pr2.getRatings()?-1:1 );
+	if(optionalProduct.isPresent()) {
+		Product highestRatedProduct=optionalProduct.get();
+		System.out.println("Highest rated product is "+highestRatedProduct.getProdName());
+	}
+	
+	
+	
 }
 }
