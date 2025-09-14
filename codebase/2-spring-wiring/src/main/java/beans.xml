@@ -4,10 +4,12 @@
 	xmlns:ctx="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	<bean id="service" class="com.geek.service.AccountServiceImpl" lazy-init="false">
+	<bean id="service" class="com.geek.service.AccountServiceImpl"
+	 lazy-init="false" autowire="byName">
 		<!-- wiring -->
-		<property name="rep" ref="savingsrep"></property>
+		<!--<property name="rep" ref="savingsrep">
+		</property>-->
 	</bean>
-	<bean id="savingsrep" class="com.geek.rep.SavingsAccRep">
+	<bean id="rep" class="com.geek.rep.SavingsAccRep">
 	</bean>
 </beans>

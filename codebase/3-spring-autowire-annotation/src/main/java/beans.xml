@@ -4,12 +4,17 @@
 	xmlns:ctx="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	<bean id="service" class="com.geek.service.AccountServiceImpl"
-	 lazy-init="false" autowire="byName">
-		<!-- wiring -->
-		<!--<property name="rep" ref="savingsrep">
-		</property>-->
+	<!--
+	<bean id="service" class="com.geek.service.AccountServiceImpl">
 	</bean>
-	<bean id="rep" class="com.geek.rep.SavingsAccRep">
+	<bean id="savingsRep" class="com.geek.rep.SavingsAccRep">
 	</bean>
+	-->
+	<!-- only for @Autowired -->
+	<!--<ctx:annotation-config></ctx:annotation-config>-->
+	
+	<!-- compoents + autowired -->
+	<!--  spring scans all classes which annotated with component annoation in com.geeks package-->
+	<ctx:component-scan base-package="com.geek">
+	</ctx:component-scan>
 </beans>

@@ -4,7 +4,7 @@ public class AccountServiceImpl  implements AccountService{
 	public AccountServiceImpl() {
 		System.out.println("Acc service constructor");
 	}
-	private AccountRep rep;
+	private AccountRep rep=null;
 	public void setRep(AccountRep rep) {
 		System.out.println("service setter");
 		this.rep = rep;
