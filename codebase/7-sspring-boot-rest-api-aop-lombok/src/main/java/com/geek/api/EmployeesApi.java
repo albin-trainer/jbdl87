@@ -2,6 +2,8 @@ package com.geek.api;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,8 @@ import jakarta.validation.Valid;
 public class EmployeesApi {
 	@Autowired
 	private EmployeeService empService;
+	Logger log= LoggerFactory.getLogger(EmployeesApi.class);
+	
 	@GetMapping("/test")
 	public String test() {
 		return "Its working";
@@ -32,7 +36,12 @@ public class EmployeesApi {
 	}
 	@GetMapping
 	public List<Employee> getAllEmps(){
-		return empService.allEmps();
+		//logs used to maintain/tract the history ...
+		log.info("getting all emos "); //with timestamp can be stored in a file
+		System.out.println("---before ---");
+		 List<Employee> emps= empService.allEmps();
+		 System.out.println("----after----");
+		 return emps;
 	}
 	@PostMapping(produces = "application/json",consumes = "application/xml")
 	public List<Employee> addNewEmp( @Valid @RequestBody Employee e){
