@@ -43,11 +43,9 @@ public class EmployeesApi {
 		 System.out.println("----after----");
 		 return emps;
 	}
-	@PostMapping(produces = "application/json",consumes = "application/xml")
-	public List<Employee> addNewEmp( @Valid @RequestBody Employee e){
-		List<Employee> emps=empService.allEmps();
-		emps.add(e);
-		return emps;
+	@PostMapping(produces = "application/json",consumes = {"application/xml","application/json"})
+	public Employee addNewEmp( @Valid @RequestBody Employee e){
+		return empService.addNewEmp(e);
 	}
 	
 	@GetMapping( value= "/{id}",produces = { "application/xml","application/json"})
