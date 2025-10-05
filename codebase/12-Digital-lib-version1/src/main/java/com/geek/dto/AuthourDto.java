@@ -1,14 +1,10 @@
-package com.geek.entity;
+package com.geek.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-@Entity
 @Data
-public class Authour {
-	@Id
+public class AuthourDto {
+
 private int authourId;
 	@NotBlank(message = "Authour name cannnot be blank")
 private String authourName;
