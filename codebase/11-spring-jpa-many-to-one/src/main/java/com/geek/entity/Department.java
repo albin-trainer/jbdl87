@@ -16,5 +16,7 @@ public class Department {
 	@Id
 private int deptId;
 private String deptName;
+@OneToMany(mappedBy = "dept")
+private List<Employee> emps;
 
 }

@@ -1,0 +1,6 @@
+package com.geek.entity;
+
+public enum Genre {
+FICTION,THRILLER, HISTORICAL, DRAMA, COMPUTERS, HORROR,
+COMEDY, INSPIRATION, FANTACY
+}
