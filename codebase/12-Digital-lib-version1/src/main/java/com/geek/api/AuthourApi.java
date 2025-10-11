@@ -25,9 +25,5 @@ private BookService bookService;
 	Authour authour=bookService.addAuthour(a);
 	return new ResponseEntity<Authour>(authour,HttpStatus.CREATED);
 	}
-	@PostMapping("/books")
-	public ResponseEntity<Book> addNewBook( @RequestBody @Valid BookDto bookDto){
-	Book book=	bookService.addBook(bookDto);
-	return new ResponseEntity<Book>(book,HttpStatus.CREATED);
-	}
+	
 }

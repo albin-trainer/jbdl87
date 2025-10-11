@@ -6,6 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.geek.dto.AuthourDto;
@@ -29,16 +32,15 @@ public class BookServiceImpl implements BookService {
 		BeanUtils.copyProperties(authourDto, authour);
 		return authRepo.save(authour);
 	}
-
+	//repositories --> provides abstraction over dau ,  hides impl of DAO
 	@Override
 	public Book searchBookById(int bookId) {
-		
-		return null;
+		return bookRepo.findById(bookId).orElseThrow(() ->new ApplicationException("Book id not found"));
 	}
-
 	@Override
 	public Book addBook(BookDto bookDto) {
 		int authourId=bookDto.getAuthourId();
+		//chks the book already present or not 
 		Optional<Book> optionalBook=   bookRepo.findById(bookDto.getBookId());
 		if(optionalBook.isPresent()) {
 			throw new ApplicationException("Book already present");
@@ -53,7 +55,8 @@ public class BookServiceImpl implements BookService {
 			return bookRepo.save(book); //insert or update ....
 		}
 		//throw exception ....authour not found ....
-		return null;
+		throw new ApplicationException("Authour not found");
+
 	}
 
 	@Override
@@ -68,37 +71,30 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Page<Book> allBookswithPagination(int pageNo, int size) {
-		return null;
+		//Pageable pageable=PageRequest.of(pageNo, size);
+		Pageable pageable=PageRequest.of(pageNo, size,Sort.by("bookName"));
+		return bookRepo.findAll(pageable);
 	}
 
 	@Override
 	public List<Book> searchByAuthour(int authourId) {
-		// TODO Auto-generated method stub
-		return null;
+		// lets write 
+		return bookRepo.getByAuthourId(authourId);
 	}
-
 	@Override
 	public List<Book> searchByGenre(Genre genre) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookRepo.findByGenre(genre);
 	}
-
 	@Override
 	public void removeBook(int bookId) {
-		// TODO Auto-generated method stub
-		
 	}
-
 	@Override
 	public List<Book> searchByBookName(String bookName) {
-		// TODO Auto-generated method stub
-		return null;
+		//select * from Book where bookName=? or bookName like %
+		return bookRepo.findByBookName(bookName);
 	}
-
 	@Override
 	public int updateCost(int bookId, float cost) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
