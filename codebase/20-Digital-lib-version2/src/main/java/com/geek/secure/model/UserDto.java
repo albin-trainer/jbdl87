@@ -1,23 +1,20 @@
-package com.geek.entity;
+package com.geek.secure.model;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+@Data
+public class UserDto {
 
-@Entity @Data
-public class User {
-	@Id
 private int userId;
-	@Column(unique = true)
 	private String userName;
 private String firstName; 
-@NotBlank(message =  "must enter last name")
 private String lastName;
 @Column(unique = true)
 private String email;
 
 private String role;
 private String password;
+   
 }

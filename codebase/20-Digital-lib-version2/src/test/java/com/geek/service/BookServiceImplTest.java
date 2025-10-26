@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.geek.entity.Authour;
 import com.geek.entity.Book;
 import com.geek.entity.Genre;
+import com.geek.exceptions.ApplicationException;
 import com.geek.repository.BookRepository;
 @ExtendWith(MockitoExtension.class)
 class BookServiceImplTest {
@@ -37,6 +38,9 @@ class BookServiceImplTest {
 	}
 	@Test
 	void testSearchBookByIdException() {
+		when(bookRepo.findById(2)).thenThrow(new ApplicationException("Book not found") );
+		ApplicationException ex=assertThrows(ApplicationException.class, ()-> bookService.searchBookById(2) );
+		assertEquals(ex.getMessage(), "Book not found");
 		
 	}
 

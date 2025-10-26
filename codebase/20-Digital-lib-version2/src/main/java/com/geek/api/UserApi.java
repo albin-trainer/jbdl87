@@ -20,10 +20,10 @@ import jakarta.validation.Valid;
 public class UserApi {
 	@Autowired
 	private UserService userService;
-	@PostMapping
-	public User addNewUser(@Valid  @RequestBody  User u) {
-		return userService.addNewUser(u);
-	}
+//	@PostMapping
+//	public User addNewUser(@Valid  @RequestBody  User u) {
+//		return userService.addNewUser(u);
+//	}
 	@PostMapping("borrowbook")
 	public Book borrowBook(@RequestBody BorrowDto borrowDto) {
 	   return userService.borrowBook(borrowDto);
