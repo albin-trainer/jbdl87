@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.model.Order;
+import com.example.proxy.ProductProxy;
 
 @RestController
 public class OrderApi {
@@ -34,5 +35,14 @@ public Order orderProductLoadBalancer(@PathVariable("id")  int id, @PathVariable
 	order.setTotalPrice(order.getPrice()*q);
 	order.setQuantity(q);
 	return order;
+}
+@Autowired
+private ProductProxy proxy;
+@PostMapping("/orderFeign/{id}/{q}")
+public Order orderProductByFeign(@PathVariable("id")  int id, @PathVariable("q") int q) { //best practice to make DTO
+	Order order=proxy.orderProduct(id);
+	order.setTotalPrice(order.getPrice()*q);
+	order.setQuantity(q);
+return order;
 }
 }
