@@ -1,0 +1,21 @@
+Gitub OAuth2 app register links:
+https://github.com/settings/applications/new
+
+OAuth2 Url links:
+https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
+
+
+SecurityApp_Albin
+
+http://localhost:8080/hello
+
+
+Client ID
+Ov23liSW35m20rgs0QeY
+
+Client secrets
+
+35ac97b2bb4999cb41985c44c2f2549024d66125
+
+
+

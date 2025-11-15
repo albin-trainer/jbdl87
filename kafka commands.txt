@@ -1,0 +1,23 @@
+zookeeper -> to manager 1 or more kafka brokers
+zookeeper-server-start.bat config\zookeeper.properties
+
+to start kafka-server 
+kafka-server-start.bat config\server.properties
+
+Command to list topics:
+kafka-topics --bootstrap-server localhost:9092 --list
+
+to create topic 
+kafka-topics --create --topic helloTopic1 --bootstrap-server localhost:9092
+
+to send msgs
+kafka-console-producer --topic helloTopic1 --bootstrap-server localhost:9092
+
+to receive msgs
+kafka-console-consumer --topic helloTopic1  --from-beginning --bootstrap-server localhost:9092
+
+to receive msgs with group 
+kafka-console-consumer --topic helloTopic1  --from-beginning --bootstrap-server localhost:9092 --group gA
+
+Command to delete a topic
+kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic my-topic

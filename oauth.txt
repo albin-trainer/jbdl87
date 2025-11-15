@@ -1,0 +1,41 @@
+What
+---- 
+OAuth 2.0, which stands for “Open Authorization”, is a standard designed to allow a website or application to access resources hosted by other web apps on behalf of a user
+
+
+Why
+----
+
+OAuth is used to provide secure and convenient delegated access to resources without requiring users to share their actual credentials
+
+It allows applications to access user data or perform actions on their behalf, such as interacting with APIs, without needing the user's password or other sensitive information. 
+
+
+
+Providers that use non-JWT (opaque) tokens
+-------------------------
+GitHub
+
+Facebook
+
+LinkedIn
+
+Twitter (OAuth 1.0a)
+
+Spotify
+
+Instagram (old)
+
+-----------------------------------
+
+ Providers that use JWT tokens
+
+Google
+
+Microsoft Azure
+
+Keycloak
+
+Auth0
+
+Okta
