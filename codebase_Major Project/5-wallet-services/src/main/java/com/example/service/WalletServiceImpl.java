@@ -1,5 +1,7 @@
 package com.example.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,11 +19,13 @@ public class WalletServiceImpl implements WalletService {
 	private RestTemplate template;
 	@Value("${welcomeOffer}")
 	private float welcomeOffer;
-	
+	private Logger log=LoggerFactory.getLogger(WalletServiceImpl.class);
 	@Override
 	public boolean isPresent(int userId) {
+		log.info("Making a call to user service {} ", userId);
 		 //make a call to the user-service for verification
 		String url="http://3-user-service/verifyuser/"+userId;
+		//NEW  HTTP REQUEST to the user service
 		boolean isPresent=template.getForObject(url, Boolean.class);
 		return isPresent;
 	}
