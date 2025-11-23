@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +32,13 @@ public class WalltetApi {
 	public boolean isPresent(@PathVariable("userId") int userId) {
 		log.info("searching the user {}",userId);
 		return walletService.isPresent(userId);
+	}
+	@GetMapping("/wallet/{walletId}")
+	public Wallet readWalletById(@PathVariable("walletId")    int walletId) {
+		return walletService.readWalletById(walletId);
+	}
+	@PutMapping
+	public Wallet updateNewWallet(@RequestBody  Wallet w) {
+		return walletService.updateNewWallet(w);
 	}
 }

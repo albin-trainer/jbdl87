@@ -18,7 +18,7 @@ public class WalletServiceImpl implements WalletService {
 	@Autowired
 	private RestTemplate template;
 	@Value("${welcomeOffer}")
-	private float welcomeOffer;
+	public float welcomeOffer;
 	private Logger log=LoggerFactory.getLogger(WalletServiceImpl.class);
 	@Override
 	public boolean isPresent(int userId) {
@@ -40,6 +40,18 @@ public class WalletServiceImpl implements WalletService {
 		else
 			throw new ApplicationException("User id is incorrect");
 		return w;
+	}
+
+	@Override
+	public Wallet readWalletById(int walletId) {
+		
+		return walletRepo.findById(walletId).orElse(null);
+		
+	}
+
+	@Override
+	public Wallet updateNewWallet(Wallet w) {
+		return walletRepo.save(w);
 	}
 
 }

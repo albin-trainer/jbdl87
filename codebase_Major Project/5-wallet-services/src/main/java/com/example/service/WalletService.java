@@ -5,4 +5,7 @@ import com.example.entity.Wallet;
 public interface WalletService {
 	boolean isPresent(int userId);
 	Wallet addNewWallet(Wallet w);
+	
+	Wallet readWalletById(int walletId);
+	Wallet updateNewWallet(Wallet w);
 }
